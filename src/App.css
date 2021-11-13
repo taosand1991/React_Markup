@@ -446,7 +446,6 @@ footer .list-item {
 
 .list-item .about, .service, .info, .follow {
     flex-basis: 40%;
-    /* text-align: left; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -763,7 +762,5 @@ footer .close-content {
 .second-paragraph .second-slide {
   flex-basis: 50%
 }
-
-
 
 }
