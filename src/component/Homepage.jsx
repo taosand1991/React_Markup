@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Bitmap from "../static/images/Bitmap-4.png";
 import RightArrow from "../static/images/Combined_Shape.png";
 import LeftArrow from "../static/images/Combined_Shape-left.png";
@@ -7,7 +7,28 @@ import Gallery2 from "../static/images/Bitmap-2.png";
 import Gallery3 from "../static/images/Bitmap-3.png";
 import Gallery4 from "../static/images/Bitmap.png";
 
+let index = 0;
 function Homepage(props) {
+  useEffect(() => {
+    const slides = document.querySelectorAll(".slide");
+    slides[index].classList.add("background");
+    setInterval(() => {
+      flipSlide(index);
+      index++;
+      if (index >= slides.length) {
+        index = 0;
+      }
+    }, 3000);
+  }, []);
+
+  const flipSlide = (n) => {
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach((slide) => {
+      slide.classList.remove("background");
+    });
+    slides[n].classList.add("background");
+  };
+
   return (
     <React.Fragment>
       <section className="first-paragraph">
@@ -50,9 +71,9 @@ function Homepage(props) {
           </div>
         </div>
         <div className="slider-part">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className="slide"></span>
+          <span className="slide"></span>
+          <span className="slide"></span>
         </div>
       </section>
       <section className="second-paragraph">
@@ -92,6 +113,11 @@ function Homepage(props) {
             to all of my emails and delivery of the kitchen was as planned.
           </p>
           <p>Jane, Dundee</p>
+          <div className="mobile-scroll">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <div className="frequent-asked">
             <p>frequent asked questions</p>
           </div>
