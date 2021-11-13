@@ -9,6 +9,7 @@ import Gallery4 from "../static/images/Bitmap.png";
 
 let index = 0;
 function Homepage(props) {
+  //small code for making carousel slide to work but no distinct pictures to do that
   useEffect(() => {
     const slides = document.querySelectorAll(".slide");
     slides[index].classList.add("background");
