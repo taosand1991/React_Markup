@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { SRLWrapper } from "simple-react-lightbox";
 import Bitmap from "../static/images/Bitmap-4.png";
 import RightArrow from "../static/images/Combined_Shape.png";
 import LeftArrow from "../static/images/Combined_Shape-left.png";
@@ -50,17 +51,10 @@ function Homepage(props) {
       pageSlide[currentIndex].style.display = "block";
     });
 
-    mobileSwipe();
+    mobileSlide();
   }, []);
 
-  const pageScroll = (number) => {
-    const pageSlide = document.querySelectorAll(".page-scroll");
-    pageSlide.forEach((page) => {
-      page.style.display = "none";
-    });
-    pageSlide[number].style.display = "block";
-  };
-
+  //carousel function
   const flipSlide = (n) => {
     const slides = document.querySelectorAll(".slide");
     slides.forEach((slide) => {
@@ -69,7 +63,17 @@ function Homepage(props) {
     slides[n].classList.add("background");
   };
 
-  const mobileSwipe = () => {
+  // slide function in desktop screen
+  const pageScroll = (number) => {
+    const pageSlide = document.querySelectorAll(".page-scroll");
+    pageSlide.forEach((page) => {
+      page.style.display = "none";
+    });
+    pageSlide[number].style.display = "block";
+  };
+
+  // slide function in mobile screen
+  const mobileSlide = () => {
     const dots = document.querySelectorAll(".dot");
     dots[currentIndex].classList.add("active");
     const pageSlide = document.querySelectorAll(".page-scroll");
@@ -89,8 +93,18 @@ function Homepage(props) {
     pageSlide.forEach((page) => {
       page.style.display = "none";
     });
-
     pageSlide[currentIndex].style.display = "block";
+  };
+
+  const settings = {
+    caption: {
+      captionAlignment: "center",
+      captionTextTransform: "uppercase",
+    },
+    buttons: {
+      showDownloadButton: false,
+      showThumbnailsButton: true,
+    },
   };
 
   return (
@@ -216,20 +230,34 @@ function Homepage(props) {
       </section>
       <section className="customer-gallery">
         <h5>Customer Gallery</h5>
-        <div className="gallery-details">
-          <div className="gallery">
-            <img src={Gallery1} alt="gal1" />
+        <SRLWrapper options={settings}>
+          <div className="gallery-details">
+            <div className="gallery">
+              <img src={Gallery1} alt="bedroom" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery2} alt="nice cozy" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery3} alt="sweet" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery4} alt="bedroom" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery1} alt="sweet" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery3} alt="sweet" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery2} alt="bedroom" />
+            </div>
+            <div className="gallery">
+              <img src={Gallery1} alt="cozy" />
+            </div>
           </div>
-          <div className="gallery">
-            <img src={Gallery2} alt="gal2" />
-          </div>
-          <div className="gallery">
-            <img src={Gallery3} alt="gal3" />
-          </div>
-          <div className="gallery">
-            <img src={Gallery4} alt="gal4" />
-          </div>
-        </div>
+        </SRLWrapper>
         <div className="view-more">
           <p>view more</p>
         </div>
