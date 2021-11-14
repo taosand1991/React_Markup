@@ -17,7 +17,6 @@ html, #root {
   background: transparent url('static/images/Bitmap-5.png') 100% 30% no-repeat ;
   width: 100%;
   height: 900px;
-  overflow: hidden;
   position: relative;
 }
 /* ------NavBar section---*/
@@ -264,7 +263,9 @@ transition: all .3s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
   align-items: center;
+  z-index: 99;
 }
 .third-paragraph .customer-section {
   display: flex;
@@ -273,12 +274,14 @@ transition: all .3s ease-in-out;
   align-items: center;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 .third-paragraph .customer-section .left-arrow {
   position: absolute;
   top: 40%;
   left: 200px;
+  z-index: 10;
   cursor: pointer;
 }
 
@@ -286,6 +289,7 @@ transition: all .3s ease-in-out;
   position: absolute;
   top: 40%;
   right: 200px;
+  z-index: 10;
   cursor: pointer;
 }
 
@@ -311,6 +315,24 @@ transition: all .3s ease-in-out;
   text-align: center;
   font-family: Helvetica;
 }
+
+.paragraph-scroll{
+  position: relative;
+  display: flex;
+  width: 50%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.paragraph-scroll .page-scroll{
+  display: block;
+  transition: all .5s ease-in-out;
+}
+
+
 
 .customer-section .frequent-asked {
   width: 350px;
@@ -353,7 +375,7 @@ transition: all .3s ease-in-out;
   letter-spacing: 5px;
 }
 
-.customer-gallery .gallery-details{
+ .gallery-details{
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -363,11 +385,12 @@ transition: all .3s ease-in-out;
 
 .gallery-details .gallery {
   flex-basis: 15%;
+  cursor: pointer;
   margin:15px;
   position: relative;
 }
 
-.gallery img {
+.gallery-details .gallery img {
   position: relative;
   width: 100%;
   height: 100%;
@@ -522,12 +545,14 @@ footer .close-content {
 
 
 @media only screen and (max-width: 768px)  {
+  #root {
+   padding: 5px;
+  }
     .first-paragraph {
         height: 500px;
         justify-content: center;
         background-position: 40% 20%;
         width: 100%;
-        
     }
 
     .first-paragraph .slider-part {
@@ -628,7 +653,7 @@ footer .close-content {
     width: 100%;
   }
   .customer-section p{
-    width: 100%;
+    width: 90%;
     font-size:10px;
   }
   .customer-section .frequent-asked{
@@ -644,7 +669,7 @@ footer .close-content {
       align-items: center;
   }
 
-  .mobile-scroll span {
+  .mobile-scroll .dot {
       position: relative;
       width: 20px;
       height: 20px;
@@ -653,17 +678,13 @@ footer .close-content {
       justify-content: center;
       align-items: center;
       text-align: center;
-      margin: 10px;
+      margin: 5px;
       border: 2px solid #D4B254;
+      transition: all .3s linear;
   }
 
-  .mobile-scroll span:first-child::before {
-    position: absolute;
-    content: "";
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #D4B254;
+  .mobile-scroll .dot.active {
+    background-color:#D4B254
   }
 
   .frequent-asked p{
@@ -677,10 +698,18 @@ footer .close-content {
   .customer-gallery h5 {
     font-size: 15px;
   }
+ .gallery-details {
+    width: 500px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 
    .gallery-details .gallery {
-      flex-basis: 10%;
-      margin: 5px;
+    padding: 4px;
+    flex-basis: 35%;
+    margin: 1px;
   }
   .customer-gallery .view-more {
     width:70px;
@@ -707,28 +736,47 @@ footer .close-content {
   }
   footer .list-item {
     flex-direction: row;
+    margin-top: 10px;
     width: 100%;
     flex-wrap: wrap;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
   }
 
-  footer .service, .about, .follow, .info {
-    flex-basis: 40%;
+  footer  .service, .about, .follow, .info {
+    flex-basis: 29%;
+    justify-content: center;
+  }
+
+  .list-item .follow {
+    flex-basis: 10%
   }
 
   footer .close-content {
     width: 100%;
   }
 
+  footer h4 {
+    font-size: 10px !important;
+    text-align: center !important;
+  }
+
+  footer ul {
+    margin-left: -10px;
+  }
+
+  footer ul li {
+    font-size: 8px !important;
+  }
+
   footer p{
-    width:300px
+    width:300px;
+    margin-top: -40px;
   }
 
 }
 
-
-
-
+/*-----Ipad Screen Version-------*/
 @media only screen and (max-width: 1024px){
   nav {
     width: 100%;

@@ -8,9 +8,11 @@ import Gallery3 from "../static/images/Bitmap-3.png";
 import Gallery4 from "../static/images/Bitmap.png";
 
 let index = 0;
+let currentIndex = 0;
 function Homepage(props) {
   //small code for making carousel slide to work but no distinct pictures to do that
   useEffect(() => {
+    const pageSlide = document.querySelectorAll(".page-scroll");
     const slides = document.querySelectorAll(".slide");
     slides[index].classList.add("background");
     setInterval(() => {
@@ -20,7 +22,44 @@ function Homepage(props) {
         index = 0;
       }
     }, 3000);
+
+    pageScroll(currentIndex);
+
+    const leftArrow = document.querySelector(".left-arrow");
+    const rightArrow = document.querySelector(".right-arrow");
+    leftArrow.addEventListener("click", () => {
+      currentIndex--;
+      if (currentIndex > 0) {
+        pageSlide.forEach((page) => {
+          page.style.display = "none";
+        });
+        pageSlide[currentIndex].style.display = "block";
+      }
+
+      console.log(currentIndex);
+    });
+    rightArrow.addEventListener("click", () => {
+      pageSlide.forEach((page) => {
+        page.style.display = "none";
+      });
+      currentIndex++;
+      if (currentIndex >= pageSlide.length) {
+        currentIndex = 0;
+      }
+      console.log(currentIndex);
+      pageSlide[currentIndex].style.display = "block";
+    });
+
+    mobileSwipe();
   }, []);
+
+  const pageScroll = (number) => {
+    const pageSlide = document.querySelectorAll(".page-scroll");
+    pageSlide.forEach((page) => {
+      page.style.display = "none";
+    });
+    pageSlide[number].style.display = "block";
+  };
 
   const flipSlide = (n) => {
     const slides = document.querySelectorAll(".slide");
@@ -28,6 +67,30 @@ function Homepage(props) {
       slide.classList.remove("background");
     });
     slides[n].classList.add("background");
+  };
+
+  const mobileSwipe = () => {
+    const dots = document.querySelectorAll(".dot");
+    dots[currentIndex].classList.add("active");
+    const pageSlide = document.querySelectorAll(".page-scroll");
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        dots.forEach((dote) => {
+          dote.classList.remove("active");
+        });
+        dot.classList.add("active");
+        currentIndex = index;
+        pageSlide.forEach((page) => {
+          page.style.display = "none";
+        });
+        pageSlide[currentIndex].style.display = "block";
+      });
+    });
+    pageSlide.forEach((page) => {
+      page.style.display = "none";
+    });
+
+    pageSlide[currentIndex].style.display = "block";
   };
 
   return (
@@ -108,16 +171,43 @@ function Homepage(props) {
           </div>
           <h5>What Our Customers Say</h5>
           <h4>Over 35 years experience designing handmade kitchens</h4>
-          <p>
-            Since my first contact I have received a very high level of customer
-            service and advice with my kitchen plans. Ben responded very quickly
-            to all of my emails and delivery of the kitchen was as planned.
-          </p>
-          <p>Jane, Dundee</p>
+
+          <div className="paragraph-scroll">
+            <div className="page-scroll">
+              <p>
+                Since my first contact I have received a very high level of
+                customer service and advice with my kitchen plans. Ben responded
+                very quickly to all of my emails and delivery of the kitchen was
+                as planned.
+              </p>
+              <p>Jane, Dundee</p>
+            </div>
+            <div className="page-scroll">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+              <p>James, True</p>
+            </div>
+            <div className="page-scroll">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of
+                type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged.
+              </p>
+              <p>Joseph, Howard</p>
+            </div>
+          </div>
+
           <div className="mobile-scroll">
-            <span></span>
-            <span></span>
-            <span></span>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
           </div>
           <div className="frequent-asked">
             <p>frequent asked questions</p>
