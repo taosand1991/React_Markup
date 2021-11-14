@@ -600,6 +600,9 @@ footer .close-content {
     width: 100%;
     height: 100%;
   }
+  .second-paragraph .first-slide{
+    display: none;
+  }
   .second-paragraph .first-slide, .second-slide {
       flex-basis: 100%;
   }
