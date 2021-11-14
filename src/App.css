@@ -545,9 +545,7 @@ footer .close-content {
 
 
 @media only screen and (max-width: 768px)  {
-  #root {
-   padding: 5px;
-  }
+  
     .first-paragraph {
         height: 500px;
         justify-content: center;
@@ -652,9 +650,18 @@ footer .close-content {
     font-size: 15px;
     width: 100%;
   }
+  .paragraph-scroll {
+    width: 100%;
+    padding: 2px;
+  }
+
+  .paragraph-scroll .page-scroll {
+    padding: 10px;
+  }
+
   .customer-section p{
-    width: 90%;
-    font-size:10px;
+    width: 100%;
+    font-size:11px;
   }
   .customer-section .frequent-asked{
       width: 150px;
@@ -707,9 +714,9 @@ footer .close-content {
   }
 
    .gallery-details .gallery {
-    padding: 4px;
-    flex-basis: 35%;
-    margin: 1px;
+    padding: 0px;
+    flex-basis: 33%;
+    margin: 5px;
   }
   .customer-gallery .view-more {
     width:70px;
