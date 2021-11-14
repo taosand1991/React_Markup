@@ -431,7 +431,7 @@ transition: all .3s ease-in-out;
 footer {
   bottom: 0;
   display: relative;
-  height:400px;
+  height:100%;
   width: 100%;
   display: flex;
   justify-content: flex-start;

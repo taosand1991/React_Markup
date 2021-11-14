@@ -8,7 +8,7 @@ import SimpleReactLightbox from "simple-react-lightbox";
 ReactDOM.render(
   <SimpleReactLightbox>
     <React.StrictMode>
-      <App />,
+      <App />
     </React.StrictMode>
   </SimpleReactLightbox>,
   document.getElementById("root")
